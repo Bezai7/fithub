@@ -1,0 +1,77 @@
+const form=document.getElementById('form');
+const username=document.getElementById('username');
+const email=document.getElementById('email');
+const password=document.getElementById('password');
+const password2=document.getElementById('password2');
+
+form.addEventListener('submit', e => {
+     
+    e.preventDefault();
+
+    validateInputs();
+});
+
+const setError = (element, message) => {
+    const inputControl = element.parentElement;
+    const errorDisplay = inputControl.querySelector('.error');
+
+    errorDisplay.innerText = message;
+    inputControl.classList.add('error');
+    inputControl.classList.remove('success');
+
+}
+
+const setSuccess = element => {
+    const inputControl = element.parentElement;
+    const errorDisplay = inputControl.querySelector('.error');
+
+    errorDisplay.innerText = '';
+    inputControl.classList.add('success');
+    inputControl.classList.remove('error');
+};
+
+const validateInputs = () => {
+    const usernameValue = username.value.trim();
+    const emailValue = username.value.trim();
+    const passwordValue = username.value.trim();
+    const password2Value = username.value.trim();
+
+};
+
+if(usernameValue === "") {
+    setError(username, 'username is required');
+}  else{
+     setSuccess(fullname);
+}
+
+if(emailValue === '') {
+    setError(email, 'email is required');
+}  else{
+     setSuccess(email);
+}
+
+// if(phoneContact === '') {
+//     setError(phoneContact, 'phone contact is required');
+//     } else if(phoneContactValue.length < 11) {
+//         setError(phoneContact, 'please enter a valid number')
+// }  else{
+//      setSuccess();
+// }
+
+if(passwordValue === '') {
+    setError(password, 'insert  password');
+}  else if (passwordValue.length < 8){
+    setError(password, 'password must be atleast 8 characters')
+} else if(passwordValue.length > 20)
+     setError(password, 'password must be less than 20 characters')
+ else {
+     setSuccess(password);
+}
+
+if(password2Value === '') {
+    setError(password2, 'please confirm our password')
+} else if (password2Value !== passwordValue) {
+    setError(password2, 'Passwords do not match');
+} else{
+    setSuccess(password2);
+};
